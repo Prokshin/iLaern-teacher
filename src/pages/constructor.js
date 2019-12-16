@@ -2,28 +2,51 @@ import React from "react";
 import {
   Header,
   Button,
-  Container,
-  Icon,
-  Image,
-  Modal
+  Form,
+  TextArea,
+  List,
+  Label,
+  Tab
 } from "semantic-ui-react";
+
+import TopicDropdown from "../component/topic-dropdown/topic-dropdown";
+const panes = [
+  {
+    menuItem: "Создать тему",
+    pane: <Tab.Pane key="tab1">Создать тему</Tab.Pane>
+  },
+  {
+    menuItem: "Создать тест",
+    pane: (
+      <Tab.Pane key="tab2">
+        <TopicDropdown />
+        <Form>создание</Form>
+      </Tab.Pane>
+    )
+  },
+  {
+    menuItem: "Создать статью",
+    pane: (
+      <Tab.Pane key="tab3">
+        <TopicDropdown />
+        <Form>
+          <TextArea placeholder="Текст статьи" />
+          <Button>Отправить</Button>
+        </Form>
+      </Tab.Pane>
+    )
+  }
+];
 
 const ConstructorPage = () => (
   <div>
     <Header as="h1" color={"red"} textAlign="center">
-      Конструктор тестов
+      Конструктор
     </Header>
     <h4 class="ui horizontal divider">
       <i class="angle down red icon"></i>
     </h4>
-    <Container textAlign="center">
-      <Button.Group widths="4" color="teal">
-        <Button content="Создать статью" />
-        <Button content="Создать тест" />
-        <Button content="Заменить статью" />
-        <Button content="Заменить тест" />
-      </Button.Group>
-    </Container>
+    <Tab panes={panes} renderActiveOnly={false} />
   </div>
 );
 

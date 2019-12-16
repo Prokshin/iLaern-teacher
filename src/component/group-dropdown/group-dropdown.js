@@ -1,14 +1,21 @@
 import React from "react";
 import { Grid, Dropdown, GridColumn } from "semantic-ui-react";
 
-const group = [{ text: "Угату, ПРО-399" }, { text: "Угату, ПРО-299" }];
+const group = [
+  {
+    key: "Угату, ПРО-399, ООП",
+    value: "Угату, ПРО-399, ООП",
+    text: "Угату, ПРО-399, ООП"
+  },
+  { text: "Угату, ПРО-299" }
+];
 const GroupDropdown = () => (
   <Dropdown
-    placeholder="Выберете группу"
+    placeholder="Выберете Предмет"
     fluid
-    search
     selection
     options={group}
+    defaultValue={group[0].value}
   />
 );
 
