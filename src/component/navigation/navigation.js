@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Grid, Menu, Segment } from "semantic-ui-react";
+import { Grid, Menu, Header, Icon } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 export default class Navigation extends Component {
   state = { activeItem: "Личный кабинет" };
@@ -10,9 +10,11 @@ export default class Navigation extends Component {
     const { activeItem } = this.state;
 
     return (
-      <Grid.Column width={4}>
-        <h4 class="ui center aligned red icon header">Панель управления</h4>
-        <div class="ui section divider"></div>
+      <Grid.Column width={3}>
+        <Header as="h1" icon color="red" textAlign="center">
+          <Icon name="student" />
+          I-learn
+        </Header>
         <Menu pointing secondary vertical fluid>
           <Link to="/">
             <Menu.Item
@@ -47,7 +49,6 @@ export default class Navigation extends Component {
             />
           </Link>
         </Menu>
-        <div class="ui section divider"></div>
       </Grid.Column>
     );
   }

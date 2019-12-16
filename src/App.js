@@ -8,6 +8,9 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import ConstructorPage from "./pages/constructor";
 import Students from "./pages/students";
+import CardApprove from "./component/card-approve/card-approve";
+import Request from "./pages/request";
+import LK from "./pages/lk";
 
 function App() {
   return (
@@ -15,7 +18,7 @@ function App() {
       <div className="App">
         <Grid>
           <Navigation />
-          <Grid.Column width={12}>
+          <Grid.Column width={13}>
             <Segment>
               <Switch>
                 <Route path="/constructor">
@@ -24,9 +27,11 @@ function App() {
                 <Route path="/students">
                   <Students />
                 </Route>
-                <Route path="/request">stud</Route>
+                <Route path="/request">
+                  <Request />
+                </Route>
                 <Route path="/">
-                  <h2>lk</h2>
+                  <LK />
                 </Route>
               </Switch>
             </Segment>
