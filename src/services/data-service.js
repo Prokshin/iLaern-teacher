@@ -39,11 +39,22 @@ const studentsTabel = [
   }
 ];
 
+const subjects = [
+  {
+    name: "ООП"
+  },
+  {
+    name: "ФЛП"
+  }
+];
 export class DataService {
   async getUserInfo() {
     return userInfo;
   }
   async getStudents(group) {
     return studentsTabel;
+  }
+  async getSubjects() {
+    return subjects;
   }
 }

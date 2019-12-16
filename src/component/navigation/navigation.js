@@ -48,6 +48,14 @@ export default class Navigation extends Component {
               color="teal"
             />
           </Link>
+          <Link to="/examine">
+            <Menu.Item
+              name="Проверка задний"
+              active={activeItem === "Проверка задний"}
+              onClick={this.handleItemClick}
+              color="teal"
+            />
+          </Link>
         </Menu>
       </Grid.Column>
     );

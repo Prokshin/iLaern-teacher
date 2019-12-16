@@ -11,6 +11,7 @@ import Students from "./pages/students";
 import CardApprove from "./component/card-approve/card-approve";
 import Request from "./pages/request";
 import LK from "./pages/lk";
+import Examine from "./pages/examine";
 
 function App() {
   return (
@@ -29,6 +30,9 @@ function App() {
                 </Route>
                 <Route path="/request">
                   <Request />
+                </Route>
+                <Route path="/examine">
+                  <Examine />
                 </Route>
                 <Route path="/">
                   <LK />
