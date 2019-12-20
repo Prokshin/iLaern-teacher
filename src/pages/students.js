@@ -2,31 +2,52 @@ import React, { Component } from "react";
 import { Header, Icon, Table } from "semantic-ui-react";
 import GroupDropdown from "../component/group-dropdown/group-dropdown";
 import { DataService } from "../services/data-service";
+import SelectCourse from "../component/select-course/select-course";
 
 export default class Students extends Component {
   data = new DataService();
   state = {
+    full: { onCourse: [{}] },
     subject: [],
     students: [1, 2]
   };
   constructor(props) {
     super(props);
-    this.updateStudents();
+    this.updateStudents(0);
   }
   updateStudents() {
-    this.data.getStudents().then(res => {
+    this.data.getAllStudents().then(res => {
       this.setState({
-        subject: res[0].subjects[0],
-        students: res[0].subjects[0].students
+        full: res,
+        subject: res.onCourse[0],
+        students: res.onCourse[0].students
       });
     });
   }
+
+  doKeyAndValueArray = () => {
+    const a = this.state.full.onCourse.map(n => {
+      return n;
+    });
+
+    return a;
+  };
+
+  onSelectCourse = id => {
+    this.setState({
+      subject: this.state.full.onCourse[id],
+      students: this.state.full.onCourse[id].students
+    });
+  };
   render() {
     let tableCell = this.state.students.map(n => {
       return (
         <Table.Row>
           <Table.Cell>{n.id}</Table.Cell>
-          <Table.Cell>{n.name}</Table.Cell>
+          <Table.Cell>
+            {n.name}
+            {n}
+          </Table.Cell>
           <Table.Cell textAlign="right">
             {n.labs} из {this.state.subject.allLabs}
           </Table.Cell>
@@ -42,20 +63,6 @@ export default class Students extends Component {
         </Table.Row>
       );
     });
-    console.log(tableCell);
-    // let tableCell = this.students.map(n => {
-    //   console.log(n);
-    // });
-    //(
-    //   <Table.Row>
-    //     <Table.Cell>1</Table.Cell>
-    //     <Table.Cell>Анатольев Анатолий Анатолиевич</Table.Cell>
-    //     <Table.Cell textAlign="right">2 из 6</Table.Cell>
-    //     <Table.Cell textAlign="center">1 из 5</Table.Cell>
-    //     <Table.Cell>7 из 18</Table.Cell>
-    //     <Table.Cell>9 из 15</Table.Cell>
-    //   </Table.Row>
-    // );
 
     return (
       <div>
@@ -65,7 +72,10 @@ export default class Students extends Component {
         <h4 class="ui horizontal divider">
           <i class="angle down red icon"></i>
         </h4>
-        <GroupDropdown />
+        <SelectCourse
+          onSelect={this.onSelectCourse}
+          subject={this.doKeyAndValueArray()}
+        />
         <Table celled structured>
           <Table.Header>
             <Table.Row>

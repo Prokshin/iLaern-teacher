@@ -1,9 +1,38 @@
-const userInfo = {
-  name: "Иванов Иван ",
+const courses = {
+  courses: [
+    {
+      id: 1,
+      name: "CourseA",
+      level: "Beginner",
+      description: null
+    },
+    {
+      id: 3,
+      name: "CourseC",
+      level: "Beginner",
+      description: "CourseC"
+    },
+    {
+      id: 2,
+      name: "CourseB",
+      level: "Intermediate",
+      description: "CourseB"
+    }
+  ]
+};
+
+const TeacherById = {
+  id: 2,
+  firstName: "Rail1",
+  lastName: "Sham1",
+  login: "Rail.Ss1",
+  password: "pass1",
+  email: "rail@mail.ru1",
+  birthDate: null,
+  role: "TEACHER",
   memo:
     "Я живу и работаю в Уфе <br> <a href=''>mysite.com</a> <br> <a href=''>vk.com/bb_king</a> "
 };
-
 const studentsTabel = [
   {
     group: "ПРО-499",
@@ -37,6 +66,26 @@ const studentsTabel = [
   }
 ];
 
+const students = {
+  onCourse: [
+    {
+      id: 0,
+      name: "CourseA",
+      students: ["Иванов И И", "петров П П "]
+    },
+    {
+      id: 1,
+      name: "CourseB",
+      students: ["Иванов И F", "петров П F "]
+    },
+    {
+      id: 2,
+      name: "CourseC",
+      students: ["Иванов F И", "петров F П "]
+    }
+  ]
+};
+
 const subjects = [
   {
     id: "0",
@@ -48,13 +97,16 @@ const subjects = [
   }
 ];
 export class DataService {
-  async getUserInfo() {
-    return userInfo;
+  async getTeacher(id) {
+    return TeacherById;
   }
-  async getStudents(group) {
+  async getStudents(course) {
     return studentsTabel;
   }
-  async getSubjects() {
-    return subjects;
+  async getCourses() {
+    return courses;
+  }
+  async getAllStudents() {
+    return students;
   }
 }

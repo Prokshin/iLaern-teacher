@@ -33,9 +33,9 @@ export default class LK extends Component {
   }
 
   updateInfo() {
-    this.data.getUserInfo().then(res => {
+    this.data.getTeacher(2).then(res => {
       this.setState({
-        name: res.name,
+        name: `${res.firstName} ${res.lastName}`,
         memo: res.memo
       });
     });

@@ -30,9 +30,9 @@ export default class ConstructorPage extends Component {
 
   updateSubjects() {
     this.data
-      .getSubjects()
+      .getCourses()
       .then(res => {
-        this.updatePanes(res);
+        this.updatePanes(res.courses);
       })
       .then(res => {
         this.setState({

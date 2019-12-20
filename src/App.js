@@ -15,7 +15,7 @@ import Examine from "./pages/examine";
 
 function App() {
   return (
-    <Router>
+    <Router basename="/teacher">
       <div className="App">
         <Grid>
           <Navigation />
