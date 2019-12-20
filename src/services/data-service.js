@@ -1,9 +1,7 @@
 const userInfo = {
-  name: "Иванов Иван Иванович",
-  location: "Уфа",
-  university: "УГАТУ",
-  email: "example@mail.ru",
-  site: "vk.com/BestMotherFucker"
+  name: "Иванов Иван ",
+  memo:
+    "Я живу и работаю в Уфе <br> <a href=''>mysite.com</a> <br> <a href=''>vk.com/bb_king</a> "
 };
 
 const studentsTabel = [

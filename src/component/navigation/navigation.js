@@ -32,6 +32,14 @@ export default class Navigation extends Component {
               color="teal"
             />
           </Link>
+          <Link to="/courses">
+            <Menu.Item
+              name="Мои курсы"
+              active={activeItem === "Мои курсы"}
+              onClick={this.handleItemClick}
+              color="teal"
+            />
+          </Link>
           <Link to="/students">
             <Menu.Item
               name="Мои студенты"

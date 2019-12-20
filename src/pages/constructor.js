@@ -12,12 +12,16 @@ import {
 import TopicDropdown from "../component/topic-dropdown/topic-dropdown";
 import SubjectDropdown from "../component/subject-dropdawn/subject-dropdown";
 import { DataService } from "../services/data-service";
+import CreateCourse from "../component/forms/createCourse";
 
 export default class ConstructorPage extends Component {
   data = new DataService();
   panes = [];
   state = {
-    subjects: []
+    subjects: [],
+    createCourse: { name: "gg" },
+    login: "",
+    password: ""
   };
   constructor(props) {
     super(props);
@@ -36,9 +40,61 @@ export default class ConstructorPage extends Component {
         });
       });
   }
+
   updatePanes(subjects) {
     console.log(subjects);
     this.panes = [
+      {
+        menuItem: "Создать курс",
+        pane: (
+          <Tab.Pane key="tab0">
+            <CreateCourse />
+          </Tab.Pane>
+          // <Tab.Pane key="tab2">
+          //   <form class="ui form" onSubmit={this.handleSubmit}>
+          //     <div class="field">
+          //       <label class="ui inverted">Название</label>
+          //       <div class="ui left input">
+          //         <input
+          //           type="text"
+          //           name="name"
+          //           placeholder="Название"
+          //           required
+          //         />
+          //       </div>
+          //     </div>
+          //     <div class="field">
+          //       <label>Необходимый уровень студентов</label>
+          //       <div class="ui left  input">
+          //         <input
+          //           type="text"
+          //           name="level"
+          //           placeholder="Уровень"
+          //           required
+          //         />
+          //       </div>
+          //     </div>
+          //     <div class="field">
+          //       <label>Краткое описание курса</label>
+          //       <div class="ui left input">
+          //         <input
+          //           type="text"
+          //           name="level"
+          //           placeholder="Описание"
+          //           required
+          //         />
+          //       </div>
+          //     </div>
+          //     <input
+          //       class="ui animated button basic teal fluid"
+          //       type="submit"
+          //       value="Отправить"
+          //     />
+          //   </form>
+          // </Tab.Pane>
+        )
+      },
+
       {
         menuItem: "Создать тему",
         pane: (

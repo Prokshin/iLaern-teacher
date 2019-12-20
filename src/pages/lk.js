@@ -1,31 +1,23 @@
 import React, { Component } from "react";
-import { Tab, Button, List, Header } from "semantic-ui-react";
+import { Tab, Message, Icon, Header } from "semantic-ui-react";
 import { DataService } from "../services/data-service";
 
-const ListIcon = props => (
-  <List>
-    <List.Item>
-      <List.Icon name="user" />
-      <List.Content>{props.name}</List.Content>
-    </List.Item>
-    <List.Item>
-      <List.Icon name="marker" />
-      <List.Content>{props.location}</List.Content>
-    </List.Item>
-    <List.Item>
-      <List.Icon name="mail" />
-      <List.Content>
-        <a href="{props.email}">{props.email}</a>
-      </List.Content>
-    </List.Item>
-    <List.Item>
-      <List.Icon name="linkify" />
-      <List.Content>
-        <a href="{props.site}">{props.site}</a>
-      </List.Content>
-    </List.Item>
-  </List>
-);
+const ListIcon = props => {
+  function createMarkup() {
+    return { __html: props.memo };
+  }
+  return (
+    <div>
+      <Header as="h2" color="teal">
+        {props.name}
+      </Header>
+      <Message>
+        <Message.Header>Информация о себе</Message.Header>
+        <p dangerouslySetInnerHTML={createMarkup()}></p>
+      </Message>
+    </div>
+  );
+};
 
 export default class LK extends Component {
   data = new DataService();
@@ -44,9 +36,7 @@ export default class LK extends Component {
     this.data.getUserInfo().then(res => {
       this.setState({
         name: res.name,
-        location: res.location,
-        email: res.email,
-        site: res.site
+        memo: res.memo
       });
     });
   }
@@ -59,12 +49,16 @@ export default class LK extends Component {
         <h4 class="ui horizontal divider">
           <i class="angle down red icon"></i>
         </h4>
-        <ListIcon
-          name={this.state.name}
-          location={this.state.location}
-          email={this.state.email}
-          site={this.state.site}
-        />
+        <ListIcon name={this.state.name} memo={this.state.memo} />
+        <h2 class="ui horizontal divider teal">
+          <Header as="h3" color="teal" textAlign="center">
+            <Icon name=" settings" /> Настройки
+          </Header>
+        </h2>
+        <p>
+          Сайт работает в тестовом режиме, часть функционала будет реализована в
+          ближайшее время
+        </p>
       </div>
     );
   }
