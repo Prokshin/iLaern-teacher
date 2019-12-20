@@ -4,7 +4,7 @@ import { Dropdown } from "semantic-ui-react";
 const SubjectDropdown = props => {
   const data = props.subjects.map(data => {
     return {
-      key: data.name,
+      key: data.id,
       value: data.name,
       text: data.name
     };
@@ -14,6 +14,7 @@ const SubjectDropdown = props => {
   };
   return (
     <Dropdown
+      onChange={props.select}
       style={style}
       placeholder="Выберете Предмет"
       fluid

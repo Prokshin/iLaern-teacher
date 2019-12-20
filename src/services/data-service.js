@@ -39,9 +39,11 @@ const studentsTabel = [
 
 const subjects = [
   {
+    id: "0",
     name: "ООП"
   },
   {
+    id: "1",
     name: "ФЛП"
   }
 ];

@@ -13,7 +13,7 @@ import TopicDropdown from "../component/topic-dropdown/topic-dropdown";
 import SubjectDropdown from "../component/subject-dropdawn/subject-dropdown";
 import { DataService } from "../services/data-service";
 import CreateCourse from "../component/forms/createCourse";
-
+import CreateTopic from "../component/forms/createTopic";
 export default class ConstructorPage extends Component {
   data = new DataService();
   panes = [];
@@ -99,11 +99,7 @@ export default class ConstructorPage extends Component {
         menuItem: "Создать тему",
         pane: (
           <Tab.Pane key="tab1">
-            <SubjectDropdown subjects={subjects} />
-            <Input placeholder="Название темы" />
-            <Button color="teal" style={{ marginLeft: "10px" }}>
-              Создать
-            </Button>
+            <CreateTopic subjects={subjects} />
           </Tab.Pane>
         )
       },
