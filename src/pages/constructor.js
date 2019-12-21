@@ -15,6 +15,7 @@ import { DataService } from "../services/data-service";
 import CreateCourse from "../component/forms/createCourse";
 import CreateTopic from "../component/forms/createTopic";
 import CreateTest from "../component/create-test/create-test";
+import CreateLecture from "../component/forms/create-lecture";
 export default class ConstructorPage extends Component {
   data = new DataService();
   panes = [];
@@ -78,21 +79,7 @@ export default class ConstructorPage extends Component {
         menuItem: "Создать статью",
         pane: (
           <Tab.Pane key="tab3">
-            <TopicDropdown />
-            <Divider horizontal></Divider>
-            <Form>
-              <TextArea placeholder="Текст статьи" />
-              <Divider horizontal></Divider>
-              <Button>Отправить</Button>
-              <Divider horizontal></Divider>
-            </Form>
-
-            <div>
-              <label for="file" className="ui icon button  teal">
-                <i className="linkify icon"></i> Прикрепить файл
-              </label>
-              <input type="file" id="file" style={{ display: "none" }} />
-            </div>
+            <CreateLecture />
           </Tab.Pane>
         )
       }
