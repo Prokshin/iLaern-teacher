@@ -14,6 +14,7 @@ import LK from "./pages/lk";
 import Examine from "./pages/examine";
 
 import Cookies from "js-cookie";
+import MyCourses from "./component/my-courses/my-courses";
 
 class App extends React.Component {
   constructor(props) {
@@ -40,6 +41,9 @@ class App extends React.Component {
                   </Route>
                   <Route path="/examine">
                     <Examine />
+                  </Route>
+                  <Route path="/courses">
+                    <MyCourses />
                   </Route>
                   <Route path="/">
                     <LK />
