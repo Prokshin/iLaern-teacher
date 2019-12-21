@@ -13,37 +13,45 @@ import Request from "./pages/request";
 import LK from "./pages/lk";
 import Examine from "./pages/examine";
 
-function App() {
-  return (
-    <Router basename="/teacher">
-      <div className="App">
-        <Grid>
-          <Navigation />
-          <Grid.Column width={13}>
-            <Segment>
-              <Switch>
-                <Route path="/constructor">
-                  <ConstructorPage />
-                </Route>
-                <Route path="/students">
-                  <Students />
-                </Route>
-                <Route path="/request">
-                  <Request />
-                </Route>
-                <Route path="/examine">
-                  <Examine />
-                </Route>
-                <Route path="/">
-                  <LK />
-                </Route>
-              </Switch>
-            </Segment>
-          </Grid.Column>
-        </Grid>
-      </div>
-    </Router>
-  );
+import Cookies from "js-cookie";
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { id: Cookies.get("id") };
+  }
+  render() {
+    return (
+      <Router basename="/teacher">
+        <div className="App">
+          <Grid>
+            <Navigation />
+            <Grid.Column width={13}>
+              <Segment>
+                <Switch>
+                  <Route path="/constructor">
+                    <ConstructorPage />
+                  </Route>
+                  <Route path="/students">
+                    <Students />
+                  </Route>
+                  <Route path="/request">
+                    <Request />
+                  </Route>
+                  <Route path="/examine">
+                    <Examine />
+                  </Route>
+                  <Route path="/">
+                    <LK />
+                  </Route>
+                </Switch>
+              </Segment>
+            </Grid.Column>
+          </Grid>
+        </div>
+      </Router>
+    );
+  }
 }
 
 export default App;

@@ -1,22 +1,56 @@
+const test = {
+  test: [{ q: "", a: ["", "", "", ""], v: 1 }]
+};
+
 const courses = {
   courses: [
     {
-      id: 1,
+      id: 12,
       name: "CourseA",
+      divisions: [
+        {
+          id: "12-A",
+          name: "Division A"
+        },
+        {
+          id: "12-B",
+          name: "Division B"
+        }
+      ],
       level: "Beginner",
       description: null
     },
     {
-      id: 3,
+      id: 34,
       name: "CourseC",
       level: "Beginner",
-      description: "CourseC"
+      description: "CourseC",
+      divisions: [
+        {
+          id: "34-A",
+          name: "Division c"
+        },
+        {
+          id: "34-B",
+          name: "Division d"
+        }
+      ]
     },
     {
-      id: 2,
+      id: 25,
       name: "CourseB",
       level: "Intermediate",
-      description: "CourseB"
+      description: "CourseB",
+      divisions: [
+        {
+          id: "25-A",
+          name: "Division e"
+        },
+        {
+          id: "25-B",
+          name: "Division f"
+        }
+      ]
     }
   ]
 };

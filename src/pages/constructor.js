@@ -14,6 +14,7 @@ import SubjectDropdown from "../component/subject-dropdawn/subject-dropdown";
 import { DataService } from "../services/data-service";
 import CreateCourse from "../component/forms/createCourse";
 import CreateTopic from "../component/forms/createTopic";
+import CreateTest from "../component/create-test/create-test";
 export default class ConstructorPage extends Component {
   data = new DataService();
   panes = [];
@@ -50,48 +51,6 @@ export default class ConstructorPage extends Component {
           <Tab.Pane key="tab0">
             <CreateCourse />
           </Tab.Pane>
-          // <Tab.Pane key="tab2">
-          //   <form class="ui form" onSubmit={this.handleSubmit}>
-          //     <div class="field">
-          //       <label class="ui inverted">Название</label>
-          //       <div class="ui left input">
-          //         <input
-          //           type="text"
-          //           name="name"
-          //           placeholder="Название"
-          //           required
-          //         />
-          //       </div>
-          //     </div>
-          //     <div class="field">
-          //       <label>Необходимый уровень студентов</label>
-          //       <div class="ui left  input">
-          //         <input
-          //           type="text"
-          //           name="level"
-          //           placeholder="Уровень"
-          //           required
-          //         />
-          //       </div>
-          //     </div>
-          //     <div class="field">
-          //       <label>Краткое описание курса</label>
-          //       <div class="ui left input">
-          //         <input
-          //           type="text"
-          //           name="level"
-          //           placeholder="Описание"
-          //           required
-          //         />
-          //       </div>
-          //     </div>
-          //     <input
-          //       class="ui animated button basic teal fluid"
-          //       type="submit"
-          //       value="Отправить"
-          //     />
-          //   </form>
-          // </Tab.Pane>
         )
       },
 
@@ -107,11 +66,10 @@ export default class ConstructorPage extends Component {
         menuItem: "Создать тест",
         pane: (
           <Tab.Pane key="tab2">
-            <TopicDropdown s={subjects} />
             <Divider horizontal></Divider>
 
             <Form>
-              <Button>Создать</Button>
+              <CreateTest />
             </Form>
           </Tab.Pane>
         )

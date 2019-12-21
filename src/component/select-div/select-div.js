@@ -17,7 +17,7 @@ export default class SelectCourse extends React.Component {
 
   render() {
     console.log(this.props.subject);
-    let a = this.props.subject?.map(n => {
+    let a = this.props.subject.map(n => {
       return <option value={n.id}>{n.name}</option>;
     });
     console.log(a);
