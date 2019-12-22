@@ -37,7 +37,7 @@ export default class CreateLecture extends React.Component {
   };
 
   mapDivision = () => {
-    return this.state.full.filter(el => el.id == this.state.course)[0]
+    return this.state.full.filter(el => el.id === this.state.course)[0]
       ?.divisions;
   };
 

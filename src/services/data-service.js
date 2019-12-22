@@ -1,7 +1,3 @@
-const test = {
-  test: [{ q: "", a: ["", "", "", ""], v: 1 }]
-};
-
 const courses = {
   courses: [
     {
@@ -120,16 +116,23 @@ const students = {
   ]
 };
 
-const subjects = [
+const task = [
   {
-    id: "0",
-    name: "ООП"
-  },
-  {
-    id: "1",
-    name: "ФЛП"
+    id: 4,
+    name: "ex4",
+    description: "Написать быструю сортировку символьного массива",
+    attachments: [
+      {
+        id: 5,
+        fileName: "2. Чем отличается дисциплинированный человек.txt",
+        location:
+          "C:\\courses-storage\\uploads\\2. Чем отличается дисциплинированный человек.txt",
+        downloadURI: "http://localhost:8080/downloadFile/api.txt"
+      }
+    ]
   }
 ];
+
 export class DataService {
   async getTeacher(id) {
     return TeacherById;
@@ -142,5 +145,9 @@ export class DataService {
   }
   async getAllStudents() {
     return students;
+  }
+
+  async getExamineTask() {
+    return task;
   }
 }

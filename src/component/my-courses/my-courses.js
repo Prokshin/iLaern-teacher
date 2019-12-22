@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Card, Header, Divider } from "semantic-ui-react";
+import { Card, Header } from "semantic-ui-react";
 
 export default class MyCourses extends Component {
   items = [

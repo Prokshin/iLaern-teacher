@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Header, Icon, Table } from "semantic-ui-react";
-import GroupDropdown from "../component/group-dropdown/group-dropdown";
+import { Header, Table } from "semantic-ui-react";
+
 import { DataService } from "../services/data-service";
 import SelectCourse from "../component/select-course/select-course";
 

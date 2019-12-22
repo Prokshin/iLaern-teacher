@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Header, Icon, Table, Card } from "semantic-ui-react";
+import { Header, Card } from "semantic-ui-react";
 import CardApprove from "../component/card-approve/card-approve";
 
 const req = [

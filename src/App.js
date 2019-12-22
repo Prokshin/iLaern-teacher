@@ -1,14 +1,14 @@
 import React from "react";
-import logo from "./logo.svg";
+
 import "./App.css";
 import Navigation from "./component/navigation/navigation";
-import { Grid, Menu, Segment } from "semantic-ui-react";
-import Content from "./component/content/content";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { Grid, Segment } from "semantic-ui-react";
+
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import ConstructorPage from "./pages/constructor";
 import Students from "./pages/students";
-import CardApprove from "./component/card-approve/card-approve";
+
 import Request from "./pages/request";
 import LK from "./pages/lk";
 import Examine from "./pages/examine";

@@ -1,5 +1,5 @@
 import React from "react";
-import SD from "../subject-dropdawn/subject-dropdown";
+
 import { DataService } from "../../services/data-service";
 
 export default class SelectCourse extends React.Component {

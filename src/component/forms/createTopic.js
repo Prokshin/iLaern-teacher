@@ -1,5 +1,5 @@
 import React from "react";
-import SD from "../subject-dropdawn/subject-dropdown";
+
 import { DataService } from "../../services/data-service";
 import SelectCourse from "../select-course/select-course";
 

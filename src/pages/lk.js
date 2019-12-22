@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Tab, Message, Icon, Header } from "semantic-ui-react";
+import { Message, Icon, Header } from "semantic-ui-react";
 import { DataService } from "../services/data-service";
 
 const ListIcon = props => {

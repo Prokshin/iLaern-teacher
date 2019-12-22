@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Divider, Table } from "semantic-ui-react";
+import { Divider } from "semantic-ui-react";
 import SelectCourse from "../select-course/select-course";
 import { DataService } from "../../services/data-service";
 
@@ -120,7 +120,7 @@ export default class CreateTest extends Component {
   };
   render() {
     console.log(
-      this.state.full.filter(el => el.id == this.state.course)[0]?.divisions
+      this.state.full.filter(el => el.id === this.state.course)[0]?.divisions
     );
     return (
       <div>
@@ -130,9 +130,7 @@ export default class CreateTest extends Component {
         />
         <SelectCourse
           subject={
-            this.state.full.filter(el => el.id == this.state.course)[0]
-              ?.divisions
-          }
+            this.state.full.filter(el => el.id === this.state.course)[0]?.divisions }
           onSelect={this.onSelectDiv}
         />
         <form className="ui  form" id="nc" onSubmit={this.handleSubmit}>
