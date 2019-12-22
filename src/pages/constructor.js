@@ -1,16 +1,6 @@
 import React, { Component } from "react";
-import {
-  Header,
-  Button,
-  Form,
-  TextArea,
-  List,
-  Input,
-  Tab,
-  Divider
-} from "semantic-ui-react";
-import TopicDropdown from "../component/topic-dropdown/topic-dropdown";
-import SubjectDropdown from "../component/subject-dropdawn/subject-dropdown";
+import { Header, Form, Tab, Divider } from "semantic-ui-react";
+
 import { DataService } from "../services/data-service";
 import CreateCourse from "../component/forms/createCourse";
 import CreateTopic from "../component/forms/createTopic";
@@ -20,6 +10,7 @@ export default class ConstructorPage extends Component {
   data = new DataService();
   panes = [];
   state = {
+    cook_id: this.props.cook_id,
     subjects: [],
     createCourse: { name: "gg" },
     login: "",
@@ -50,7 +41,7 @@ export default class ConstructorPage extends Component {
         menuItem: "Создать курс",
         pane: (
           <Tab.Pane key="tab0">
-            <CreateCourse />
+            <CreateCourse cook_id={this.state.cook_id} />
           </Tab.Pane>
         )
       },
@@ -59,7 +50,7 @@ export default class ConstructorPage extends Component {
         menuItem: "Создать тему",
         pane: (
           <Tab.Pane key="tab1">
-            <CreateTopic subjects={subjects} />
+            <CreateTopic subjects={subjects} cook_id={this.state.cook_id} />
           </Tab.Pane>
         )
       },
@@ -70,7 +61,7 @@ export default class ConstructorPage extends Component {
             <Divider horizontal></Divider>
 
             <Form>
-              <CreateTest />
+              <CreateTest cook_id={this.state.cook_id} />
             </Form>
           </Tab.Pane>
         )
@@ -79,7 +70,7 @@ export default class ConstructorPage extends Component {
         menuItem: "Создать статью",
         pane: (
           <Tab.Pane key="tab3">
-            <CreateLecture />
+            <CreateLecture cook_id={this.state.cook_id} />
           </Tab.Pane>
         )
       }

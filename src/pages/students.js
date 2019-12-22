@@ -9,7 +9,8 @@ export default class Students extends Component {
   state = {
     full: { onCourse: [{}] },
     subject: [],
-    students: [1, 2]
+    students: [1, 2],
+    cook_id: this.props.cook_id
   };
   constructor(props) {
     super(props);

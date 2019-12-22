@@ -19,7 +19,8 @@ export default class Request extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: req
+      data: req,
+      cook_id: this.props.cook_id
     };
   }
 

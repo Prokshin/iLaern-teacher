@@ -31,22 +31,22 @@ class App extends React.Component {
               <Segment>
                 <Switch>
                   <Route path="/constructor">
-                    <ConstructorPage />
+                    <ConstructorPage cook_id={this.state.id} />
                   </Route>
                   <Route path="/students">
-                    <Students />
+                    <Students cook_id={this.state.id} />
                   </Route>
                   <Route path="/request">
-                    <Request />
+                    <Request cook_id={this.state.id} />
                   </Route>
                   <Route path="/examine">
-                    <Examine />
+                    <Examine cook_id={this.state.id} />
                   </Route>
                   <Route path="/courses">
-                    <MyCourses />
+                    <MyCourses cook_id={this.state.id} />
                   </Route>
                   <Route path="/">
-                    <LK />
+                    <LK cook_id={this.state.id} />
                   </Route>
                 </Switch>
               </Segment>

@@ -25,7 +25,8 @@ export default class LK extends Component {
     name: null,
     location: null,
     email: null,
-    site: null
+    site: null,
+    cook_id: this.props.cook_id
   };
   constructor(props) {
     super(props);
