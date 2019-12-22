@@ -1,6 +1,7 @@
 import React from "react";
 import SelectCourse from "../select-course/select-course";
 import { DataService } from "../../services/data-service";
+import SelectTHeme from "../select-course/select-theme";
 
 export default class CreateLecture extends React.Component {
   data = new DataService();
@@ -56,12 +57,14 @@ export default class CreateLecture extends React.Component {
   render() {
     return (
       <form class="ui form" onSubmit={this.onSubmit}>
+        <label class="ui inverted">Выберете курс</label>
         <SelectCourse
           subject={this.state.full}
           onSelect={this.onSelectCourse}
         />
+        <label class="ui inverted">Выберете тему</label>
         <SelectCourse
-          subject={this.mapDivision()}
+          subject={this.state.full[0]?.divisions}
           onSelect={this.onSelectDiv}
         />
         <div class="field">

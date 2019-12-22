@@ -15,7 +15,7 @@ export default class TopicForm extends React.Component {
   }
 
   onSubmit(event) {
-    alert(`Курс ${this.state.name},${this.state.course} успешно создан`);
+    alert(`Тема ${this.state.name},${this.state.course} успешно создана`);
     event.preventDefault();
   }
 
@@ -55,7 +55,7 @@ export default class TopicForm extends React.Component {
               <input
                 type="text"
                 name="userName"
-                placeholder="название"
+                placeholder="Название темы курса"
                 required
                 value={this.state.name}
                 onChange={this.onChangeName}

@@ -32,7 +32,7 @@ export default class LoginForm extends React.Component {
             <input
               type="text"
               name="userName"
-              placeholder="название"
+              placeholder="Название курса"
               required
               value={this.state.name}
               onChange={this.onChangeName}
@@ -45,7 +45,7 @@ export default class LoginForm extends React.Component {
             <textarea
               type="textarea"
               name="description"
-              placeholder="краткое описание курса"
+              placeholder="Краткое описание курса"
               required
               value={this.state.description}
               onChange={this.onChangeDescription}
@@ -59,7 +59,7 @@ export default class LoginForm extends React.Component {
             <input
               type="text"
               name="level"
-              placeholder="уровень"
+              placeholder="Уровень курса"
               required
               value={this.state.password}
               onChange={this.onChangeDescription}

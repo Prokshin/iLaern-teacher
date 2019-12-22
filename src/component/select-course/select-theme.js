@@ -1,13 +1,26 @@
 import React from "react";
-import SD from "../subject-dropdawn/subject-dropdown";
+
 import { DataService } from "../../services/data-service";
 
-export default class SelectCourse extends React.Component {
+export default class SelectTHeme extends React.Component {
   data = new DataService();
   constructor(props) {
     super(props);
-    this.state = { name: "", id: "", value: "" };
+    this.state = {
+      course: this.props.course,
+      name: "",
+      id: "",
+      value: "",
+      d: this.props.subject
+    };
   }
+  mapDivision = r => {
+    return r.filter(el => el.id === this.state.course)[0]?.divisions;
+  };
+
+  update = () => {
+    this.data.getCourses().then(res => {});
+  };
 
   onSelect = event => {
     this.setState({ value: event.target.value });
@@ -16,8 +29,8 @@ export default class SelectCourse extends React.Component {
   };
 
   render() {
-    console.log(this.props.subject);
-    let a = this.props.subject?.map(n => {
+    console.log(this.state.d);
+    let a = this.state.d?.map(n => {
       return <option value={n.id}>{n.name}</option>;
     });
     console.log(a);

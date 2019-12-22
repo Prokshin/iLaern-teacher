@@ -5,6 +5,7 @@ import { DataService } from "../../services/data-service";
 
 export default class CreateTest extends Component {
   data = new DataService();
+  t = [{ divisions: [] }];
   state = {
     current: 0,
     answerCheck: 0,
@@ -33,6 +34,8 @@ export default class CreateTest extends Component {
   };
   update = () => {
     this.data.getCourses().then(res => {
+      this.t = res.courses;
+      console.log(res.courses[0].divisions);
       this.setState({
         full: res.courses
       });
@@ -119,9 +122,7 @@ export default class CreateTest extends Component {
     }
   };
   render() {
-    console.log(
-      this.state.full.filter(el => el.id === this.state.course)[0]?.divisions
-    );
+    console.log(this.state.full[this.state.course]?.divisions);
     return (
       <div>
         <SelectCourse
@@ -129,8 +130,7 @@ export default class CreateTest extends Component {
           onSelect={this.onSelectCourse}
         />
         <SelectCourse
-          subject={
-            this.state.full.filter(el => el.id === this.state.course)[0]?.divisions }
+          subject={this.state.full[0]?.divisions}
           onSelect={this.onSelectDiv}
         />
         <form className="ui  form" id="nc" onSubmit={this.handleSubmit}>
