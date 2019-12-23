@@ -8,6 +8,7 @@ export default class CreateLecture extends React.Component {
   state = {
     text: "",
     full: [{ divisions: [] }],
+    themes: [{}],
     course: null,
     division: null
   };
@@ -21,6 +22,11 @@ export default class CreateLecture extends React.Component {
     this.setState({
       course: ids
     });
+    this.data.getAllThemes(1, ids).then(res => {
+      this.setState({
+        themes: res.themes
+      });
+    });
   };
   onSelectDiv = ids => {
     console.log(ids);
@@ -30,7 +36,7 @@ export default class CreateLecture extends React.Component {
     });
   };
   update = () => {
-    this.data.getCourses().then(res => {
+    this.data.getCourses(1).then(res => {
       this.setState({
         full: res.courses
       });
@@ -56,17 +62,19 @@ export default class CreateLecture extends React.Component {
   };
   render() {
     return (
-      <form class="ui form" onSubmit={this.onSubmit}>
+      <form
+        class="ui form"
+        action="http://localhost:8080/teacher/1/courses/Course 1/gg/lecture"
+        method="POST"
+        enctype="multipart/form-data"
+      >
         <label class="ui inverted">Выберете курс</label>
         <SelectCourse
           subject={this.state.full}
           onSelect={this.onSelectCourse}
         />
         <label class="ui inverted">Выберете тему</label>
-        <SelectCourse
-          subject={this.state.full[0]?.divisions}
-          onSelect={this.onSelectDiv}
-        />
+        <SelectCourse subject={this.state.themes} onSelect={this.onSelectDiv} />
         <div class="field">
           <label class="ui inverted">Название</label>
           <div class="ui left  input">
@@ -87,6 +95,19 @@ export default class CreateLecture extends React.Component {
               type="textarea"
               name="description"
               placeholder="текст статьи, вы можете использовать html теги"
+              required
+              value={this.state.description}
+              onChange={this.onChangeDescription}
+            />
+          </div>
+        </div>
+        <div class="field">
+          <label>Текст Задачи</label>
+          <div class="ui left input">
+            <textarea
+              type="textarea"
+              name="ex"
+              placeholder="текст задачи, вы можете использовать html теги"
               required
               value={this.state.description}
               onChange={this.onChangeDescription}

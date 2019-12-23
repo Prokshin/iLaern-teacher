@@ -54,20 +54,9 @@ export default class ConstructorPage extends Component {
           </Tab.Pane>
         )
       },
-      {
-        menuItem: "Создать тест",
-        pane: (
-          <Tab.Pane key="tab2">
-            <Divider horizontal></Divider>
 
-            <Form>
-              <CreateTest cook_id={this.state.cook_id} />
-            </Form>
-          </Tab.Pane>
-        )
-      },
       {
-        menuItem: "Создать статью",
+        menuItem: "Создать лекцию",
         pane: (
           <Tab.Pane key="tab3">
             <CreateLecture cook_id={this.state.cook_id} />

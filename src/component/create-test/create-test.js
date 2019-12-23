@@ -33,7 +33,7 @@ export default class CreateTest extends Component {
     });
   };
   update = () => {
-    this.data.getCourses().then(res => {
+    this.data.getCourses(1).then(res => {
       this.t = res.courses;
       console.log(res.courses[0].divisions);
       this.setState({

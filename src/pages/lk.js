@@ -34,7 +34,7 @@ export default class LK extends Component {
   }
 
   updateInfo() {
-    this.data.getTeacher(2).then(res => {
+    this.data.getTeacher(this.state.cook_id).then(res => {
       this.setState({
         name: `${res.firstName} ${res.lastName}`,
         memo: res.memo

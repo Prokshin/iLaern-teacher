@@ -15,6 +15,9 @@ export default class TopicForm extends React.Component {
   }
 
   onSubmit(event) {
+    this.data.postCreateTheme(1, "name???", {
+      name: this.state.name
+    });
     alert(`Тема ${this.state.name},${this.state.course} успешно создана`);
     event.preventDefault();
   }
@@ -29,7 +32,7 @@ export default class TopicForm extends React.Component {
     this.setState({ name: event.target.value });
   }
   update = () => {
-    this.data.getCourses().then(res => {
+    this.data.getCourses(1).then(res => {
       this.setState({
         full: res.courses
       });

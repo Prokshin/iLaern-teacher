@@ -134,20 +134,81 @@ const task = [
 ];
 
 export class DataService {
+  async getRes(url) {
+    const res = await fetch(url);
+
+    //console.log(await res.json());
+    return await res.json();
+  }
+  async postRes(url, data) {
+    const res = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    });
+  }
   async getTeacher(id) {
-    return TeacherById;
+    const res = await this.getRes(`http://localhost:8080/teacher/${id}`);
+    return res;
   }
   async getStudents(course) {
     return studentsTabel;
   }
-  async getCourses() {
-    return courses;
+  async getCourses(id) {
+    const res = await this.getRes(
+      `http://localhost:8080/teacher/${id}/my-courses`
+    );
+    return res;
+  }
+
+  async getAllThemes(id) {
+    const res = await this.getRes(
+      `http://localhost:8080/teacher/1/courses/Course 1/`
+    );
+    return res;
   }
   async getAllStudents() {
     return students;
   }
-
+  async getMyCourse(id) {
+    const res = await this.getRes(
+      `http://localhost:8080/teacher/${id}/my-courses`
+    );
+    return res;
+  }
   async getExamineTask() {
     return task;
   }
+  async postCreateCourse(id, data) {
+    const res = await this.postRes(
+      `http://localhost:8080/teacher/${1}/courses`,
+      data
+    );
+    return res;
+  }
+  async postCreateTheme(id, course_id, data) {
+    const res = await this.postRes(
+      `http://localhost:8080/teacher/${id}/courses/Course 1/`,
+      data
+    );
+    return res;
+  }
 }
+
+const a = new DataService();
+// a.getRes("http://localhost:8080/teacher/1").then(body => {
+//   console.log(body);
+// });
+
+// const b = new DataService();
+// a.postRes("http://localhost:8080/teacher/1/courses", {
+//   name: "Course5",
+//   level: "Beginner",
+//   description: "my course 1!"
+// }).then(body => {
+//   console.log(body);
+// });
+
+console.log(a.getMyCourse(1));

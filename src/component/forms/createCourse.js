@@ -1,9 +1,11 @@
 import React from "react";
+import { DataService } from "../../services/data-service";
 
 export default class LoginForm extends React.Component {
+  data = new DataService();
   constructor(props) {
     super(props);
-    this.state = { name: "", description: "", level: "" };
+    this.state = { name: "", description: "", level: "beginer" };
 
     this.onChangeName = this.onChangeName.bind(this);
     this.onChangeDescription = this.onChangeDescription.bind(this);
@@ -11,10 +13,18 @@ export default class LoginForm extends React.Component {
   }
 
   onSubmit(event) {
+    this.data.postCreateCourse(1, {
+      name: this.state.name,
+      description: this.state.description,
+      level: this.state.level
+    });
     alert(`Курс ${this.state.name}, успешно создан`);
     event.preventDefault();
   }
-
+  onChangeLevel(event) {
+    console.log(event.target.value);
+    //this.setState({ level: event.target.value });
+  }
   onChangeDescription(event) {
     this.setState({ description: event.target.value });
   }
@@ -61,8 +71,8 @@ export default class LoginForm extends React.Component {
               name="level"
               placeholder="Уровень курса"
               required
-              value={this.state.password}
-              onChange={this.onChangeDescription}
+              value={this.state.level}
+              onChange={this.onChangeLevel}
             />
           </div>
         </div>
