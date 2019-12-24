@@ -15,7 +15,7 @@ export default class TopicForm extends React.Component {
   }
 
   onSubmit(event) {
-    this.data.postCreateTheme(1, "OOP", {
+    this.data.postCreateTheme(this.props.cook_id, this.state.course, {
       name: this.state.name
     });
     alert(`Тема ${this.state.name},${this.state.course} успешно создана`);
@@ -23,8 +23,10 @@ export default class TopicForm extends React.Component {
   }
 
   onSelectCourse = id => {
+    console.log(id);
+    console.log(this.state.full.filter(n => n.id == id).name);
     this.setState({
-      course: this.state.full[0].id
+      course: id
     });
   };
 
@@ -32,7 +34,7 @@ export default class TopicForm extends React.Component {
     this.setState({ name: event.target.value });
   }
   update = () => {
-    this.data.getCourses(1).then(res => {
+    this.data.getCourses(this.props.cook_id).then(res => {
       this.setState({
         full: res.courses
       });
@@ -44,7 +46,7 @@ export default class TopicForm extends React.Component {
     this.setState({ course: gg.target.textContent });
   }
   render() {
-    console.log();
+    console.log(this.props.cook_id);
     return (
       <div>
         <SelectCourse

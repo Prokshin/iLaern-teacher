@@ -6,6 +6,8 @@ import CreateCourse from "../component/forms/createCourse";
 import CreateTopic from "../component/forms/createTopic";
 import CreateTest from "../component/create-test/create-test";
 import CreateLecture from "../component/forms/create-lecture";
+import CreateEx from "../component/forms/create-ex";
+
 export default class ConstructorPage extends Component {
   data = new DataService();
   panes = [];
@@ -23,7 +25,7 @@ export default class ConstructorPage extends Component {
 
   updateSubjects() {
     this.data
-      .getCourses()
+      .getCourses(this.state.cook_id)
       .then(res => {
         this.updatePanes(res.courses);
       })
@@ -60,6 +62,14 @@ export default class ConstructorPage extends Component {
         pane: (
           <Tab.Pane key="tab3">
             <CreateLecture cook_id={this.state.cook_id} />
+          </Tab.Pane>
+        )
+      },
+      {
+        menuItem: "Создать задачу",
+        pane: (
+          <Tab.Pane key="tab4">
+            <CreateEx cook_id={this.state.cook_id} />
           </Tab.Pane>
         )
       }

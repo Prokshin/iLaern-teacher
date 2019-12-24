@@ -24,7 +24,7 @@ export class checkTable extends Component {
           <Table.Row key={n.id}>
             <Table.Cell>{n.id}</Table.Cell>
             <Table.Cell>
-              <Link to={`/my-courses/OOP/to-check/${n.id}`}>
+              <Link to={`${this.props.match.url}/${n.id}`}>
                 {n.exercise.name}
               </Link>
             </Table.Cell>
@@ -43,7 +43,7 @@ export class checkTable extends Component {
       <div>
         <Switch>
           <Route path="/my-courses/:id/to-check/:id">
-            <Ex />
+            <Ex cook_id={this.props.cook_id} />
           </Route>
           <Route path="/my-courses/:id/to-check">
             <Table celled size="large">

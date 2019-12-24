@@ -11,14 +11,14 @@ export default class SelectCourse extends React.Component {
 
   onSelect = event => {
     this.setState({ value: event.target.value });
-    console.log(event.target.value);
+    console.log(event.target.children);
     this.props.onSelect(event.target.value);
   };
 
   render() {
     console.log(this.props.subject);
     let a = this.props.subject?.map(n => {
-      return <option value={n.id}>{n.name}</option>;
+      return <option value={n.name}>{n.name}</option>;
     });
     console.log(a);
     return (

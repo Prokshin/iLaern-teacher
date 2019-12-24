@@ -3,14 +3,16 @@ import SelectCourse from "../select-course/select-course";
 import { DataService } from "../../services/data-service";
 import SelectTHeme from "../select-course/select-theme";
 
-export default class CreateLecture extends React.Component {
+export default class CreateEx extends React.Component {
   data = new DataService();
   state = {
     text: "",
     full: [{ divisions: [] }],
     themes: [{}],
+    lectures: [{}],
     course: null,
-    division: null
+    division: null,
+    lec: null
   };
   constructor(props) {
     super(props);
@@ -29,8 +31,6 @@ export default class CreateLecture extends React.Component {
     });
   };
   onSelectDiv = ids => {
-    console.log(ids);
-    console.log(this.state.full);
     this.setState({
       division: ids
     });
@@ -40,6 +40,21 @@ export default class CreateLecture extends React.Component {
       this.setState({
         full: res.courses
       });
+    });
+    this.data.getLecture().then(res => {
+      this.setState({
+        lectures: res.lectures
+      });
+    });
+  };
+  onSelectLec = ids => {
+    const id = this.state.lectures.filter(n => {
+      console.log(ids);
+      return n.name == ids;
+    });
+    console.log(id[0].id);
+    this.setState({
+      lec: id[0].id
     });
   };
 
@@ -65,7 +80,7 @@ export default class CreateLecture extends React.Component {
     return (
       <form
         class="ui form"
-        action={`http://localhost:8080/teacher/1/courses/${this.state.course}/${this.state.division}/lecture`}
+        action={`http://localhost:8080/teacher/${this.props.cook_id}/courses/${this.state.course}/${this.state.division}/lecture`}
         method="POST"
         enctype="multipart/form-data"
       >
@@ -76,6 +91,12 @@ export default class CreateLecture extends React.Component {
         />
         <label class="ui inverted">Выберете тему</label>
         <SelectCourse subject={this.state.themes} onSelect={this.onSelectDiv} />
+
+        <label class="ui inverted">Выберете лекцию</label>
+        <SelectCourse
+          subject={this.state.lectures}
+          onSelect={this.onSelectLec}
+        />
         <div class="field">
           <label class="ui inverted">Название</label>
           <div class="ui left  input">
@@ -90,7 +111,7 @@ export default class CreateLecture extends React.Component {
           </div>
         </div>
         <div class="field">
-          <label>Текст статьи</label>
+          <label>Текст задачи</label>
           <div class="ui left input">
             <textarea
               type="textarea"

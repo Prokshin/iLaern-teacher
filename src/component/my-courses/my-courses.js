@@ -26,13 +26,13 @@ export default class MyCourses extends Component {
     items: []
   };
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.update();
   }
 
   update = () => {
-    this.data.getMyCourse(1).then(res => {
+    this.data.getMyCourse(this.props.cook_id).then(res => {
       let b = res.courses.map(a => {
         return {
           header: a.name,

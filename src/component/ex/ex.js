@@ -37,19 +37,21 @@ class Ex extends Component {
   }
 
   update = () => {
-    this.data.getCommentByEx(1, 1).then(res => {
-      this.setState({
-        id: res.exercise.id,
-        name: res.exercise.name,
-        description: res.exercise.description,
-        id_cook: 1,
-        comments: res.comments
+    this.data
+      .getCommentByEx(this.props.cook_id, this.props.match.url, 1)
+      .then(res => {
+        console.log(res);
+        this.setState({
+          id: res.exercise.id,
+          name: res.exercise.name,
+          description: res.exercise.description,
+          id_cook: 1,
+          comments: res.comments
+        });
       });
-    });
   };
 
   render() {
-    console.log(this.props.match.url);
     return (
       <div>
         <Header color="teal" as="h2">
@@ -66,7 +68,7 @@ class Ex extends Component {
               <Header>Оценить</Header>
               <form
                 className="ui form"
-                action="http://localhost:8080/teacher/1/my-courses/OOP/to-check/1"
+                action={`http://localhost:8080/teacher/${this.props.cook_id}${this.props.match.url}`}
                 method="POST"
                 enctype="multipart/form-data"
               >
@@ -85,7 +87,7 @@ class Ex extends Component {
               <Header>Написать ошибки</Header>
               <form
                 className="ui form"
-                action="http://localhost:8080/teacher/1/my-courses/OOP/to-check/1/comment/1"
+                action={`http://localhost:8080/teacher/${this.props.cook_id}${this.props.match.url}/comment/1`}
                 method="POST"
                 enctype="multipart/form-data"
               >

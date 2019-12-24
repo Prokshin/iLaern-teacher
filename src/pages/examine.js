@@ -30,7 +30,7 @@ export default class Examine extends Component {
   }
 
   Update = () => {
-    this.data.getCourses(1).then(n => {
+    this.data.getCourses(this.state.cook_id).then(n => {
       console.log(n.courses);
       this.el = n.courses.map(r => {
         return (
@@ -61,7 +61,7 @@ export default class Examine extends Component {
           </h4>
           <Switch>
             <Route path="/my-courses/:id/to-check">
-              <CheckTable />
+              <CheckTable cook_id={this.state.cook_id} />
             </Route>
             <Route path="/my-courses">
               <Table celled size="large">

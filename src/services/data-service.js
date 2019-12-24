@@ -189,14 +189,18 @@ export class DataService {
     return res;
   }
 
-  async getCommentByEx(id, ex_id) {
-    const res = await this.getRes(
-      `http://localhost:8080/teacher/1/my-courses/OOP/to-check/1`
-    );
+  async getCommentByEx(id, url, ex_id) {
+    const res = await this.getRes(`http://localhost:8080/teacher/${id}${url}`);
     console.log(res);
     return res;
   }
 
+  async getLecture() {
+    const res = await this.getRes(
+      `http://localhost:8080/teacher/1/courses/OOP/inheritance/lecture`
+    );
+    return res;
+  }
   async postCreateCourse(id, data) {
     const res = await this.postRes(
       `http://localhost:8080/teacher/${id}/courses`,
