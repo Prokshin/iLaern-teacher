@@ -27,6 +27,7 @@ export default class SelectCourse extends React.Component {
         value={this.state.value}
         onChange={this.onSelect}
       >
+        <option selected="selected">Выберите нужный параметр</option>
         {a}
       </select>
     );

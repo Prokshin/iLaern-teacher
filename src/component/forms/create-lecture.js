@@ -22,7 +22,7 @@ export default class CreateLecture extends React.Component {
     this.setState({
       course: ids
     });
-    this.data.getAllThemes(1, ids).then(res => {
+    this.data.getAllThemes(1, "ids").then(res => {
       this.setState({
         themes: res.themes
       });
@@ -61,10 +61,11 @@ export default class CreateLecture extends React.Component {
     this.setState({ name: event.target.value });
   };
   render() {
+    console.log(this.state.themes);
     return (
       <form
         class="ui form"
-        action="http://localhost:8080/teacher/1/courses/Course 1/gg/lecture"
+        action="http://localhost:8080/teacher/1/courses/OOP/Inheritance/lecture"
         method="POST"
         enctype="multipart/form-data"
       >
@@ -95,19 +96,6 @@ export default class CreateLecture extends React.Component {
               type="textarea"
               name="description"
               placeholder="текст статьи, вы можете использовать html теги"
-              required
-              value={this.state.description}
-              onChange={this.onChangeDescription}
-            />
-          </div>
-        </div>
-        <div class="field">
-          <label>Текст Задачи</label>
-          <div class="ui left input">
-            <textarea
-              type="textarea"
-              name="ex"
-              placeholder="текст задачи, вы можете использовать html теги"
               required
               value={this.state.description}
               onChange={this.onChangeDescription}

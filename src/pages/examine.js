@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-import { Header, Card, Button, Divider, Icon } from "semantic-ui-react";
+import { Header, Card, Button, Divider, Icon, Table } from "semantic-ui-react";
 import CardApprove from "../component/card-approve/card-approve";
 import { DataService } from "../services/data-service";
+import { Link, Switch, Route } from "react-router-dom";
+import CheckTable from "../component/check-table/check-table";
 
 const req = [
   {
@@ -18,56 +20,33 @@ const req = [
 
 export default class Examine extends Component {
   data = new DataService();
-  el = "";
+  state = {
+    data: "",
+    cook_id: this.props.cook_id
+  };
   constructor(props) {
     super(props);
-    this.state = {
-      data: req,
-      cook_id: this.props.cook_id
-    };
     this.Update();
   }
 
   Update = () => {
-    this.data.getExamineTask().then(res => {
-      this.el = res.map(n => {
+    this.data.getCourses(1).then(n => {
+      console.log(n.courses);
+      this.el = n.courses.map(r => {
         return (
-          <Card key={n.id}>
-            <Card.Content>
-              <Card.Header>{n.name}</Card.Header>
-              <Card.Meta>
-                <Divider></Divider>
-                <Button basic color="green">
-                  <Icon name="file" />
-                  скачать файл
-                </Button>
-              </Card.Meta>
-              <Card.Description>{n.description}</Card.Description>
-            </Card.Content>
-            <Card.Content extra>
-              <div className="ui two buttons">
-                <Button basic color="green">
-                  Принять
-                </Button>
-                <Button basic color="red">
-                  Отклонить
-                </Button>
-              </div>
-            </Card.Content>
-          </Card>
+          <Table.Row>
+            <Table.Cell>
+              <Link to="/my-courses/OOP/to-check">{r.name}</Link>
+            </Table.Cell>
+          </Table.Row>
         );
       });
+
       this.setState({
         data: this.el
       });
     });
   };
-
-  approve(id) {
-    console.log("Подтверждение");
-    console.log("Отправка данных на сервер");
-    console.log("Удаление");
-  }
 
   render() {
     console.log(this.el);
@@ -80,7 +59,26 @@ export default class Examine extends Component {
           <h4 class="ui horizontal divider">
             <i class="angle down red icon"></i>
           </h4>
-          <Card.Group>{this.el}</Card.Group>
+          <Switch>
+            <Route path="/my-courses/:id/to-check">
+              <CheckTable />
+            </Route>
+            <Route path="/my-courses">
+              <Table celled size="large">
+                <Table.Header>
+                  <Table.Row>
+                    <Table.HeaderCell>Курс</Table.HeaderCell>
+                  </Table.Row>
+                </Table.Header>
+                <Table.Body></Table.Body>
+                <Table.Footer>
+                  <Table.Row>
+                    <Table.HeaderCell>{this.state.data}</Table.HeaderCell>
+                  </Table.Row>
+                </Table.Footer>
+              </Table>
+            </Route>
+          </Switch>
         </div>
       </div>
     );

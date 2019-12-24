@@ -15,7 +15,7 @@ export default class TopicForm extends React.Component {
   }
 
   onSubmit(event) {
-    this.data.postCreateTheme(1, "name???", {
+    this.data.postCreateTheme(1, "OOP", {
       name: this.state.name
     });
     alert(`Тема ${this.state.name},${this.state.course} успешно создана`);

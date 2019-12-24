@@ -165,7 +165,9 @@ export class DataService {
 
   async getAllThemes(id) {
     const res = await this.getRes(
-      `http://localhost:8080/teacher/1/courses/Course 1/`
+      `
+      http://localhost:8080/teacher/1/courses/OOP/
+      `
     );
     return res;
   }
@@ -181,16 +183,30 @@ export class DataService {
   async getExamineTask() {
     return task;
   }
+
+  async getExToCheck(id, url) {
+    const res = await this.getRes(`http://localhost:8080/teacher/${id}${url}`);
+    return res;
+  }
+
+  async getCommentByEx(id, ex_id) {
+    const res = await this.getRes(
+      `http://localhost:8080/teacher/1/my-courses/OOP/to-check/1`
+    );
+    console.log(res);
+    return res;
+  }
+
   async postCreateCourse(id, data) {
     const res = await this.postRes(
-      `http://localhost:8080/teacher/${1}/courses`,
+      `http://localhost:8080/teacher/${id}/courses`,
       data
     );
     return res;
   }
-  async postCreateTheme(id, course_id, data) {
+  async postCreateTheme(id, course_name, data) {
     const res = await this.postRes(
-      `http://localhost:8080/teacher/${id}/courses/Course 1/`,
+      `http://localhost:8080/teacher/${id}/courses/${course_name}`,
       data
     );
     return res;

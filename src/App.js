@@ -39,7 +39,7 @@ class App extends React.Component {
                   <Route path="/request">
                     <Request cook_id={this.state.id} />
                   </Route>
-                  <Route path="/examine">
+                  <Route path="/my-courses">
                     <Examine cook_id={this.state.id} />
                   </Route>
                   <Route path="/courses">
